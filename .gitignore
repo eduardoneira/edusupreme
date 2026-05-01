@@ -1,0 +1,62 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs and editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.iml
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+*.pem
+*.key
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node / Angular
+node_modules/
+dist/
+out-tsc/
+.angular/
+.nx/
+coverage/
+.nyc_output/
+
+# Java / Spring
+target/
+build/
+out/
+.gradle/
+*.class
+*.jar
+*.war
+*.ear
+
+# Test and tooling output
+test-results/
+playwright-report/
+.pytest_cache/
+
+# Docker and local runtime data
+.docker/
+docker-data/
+tmp/
+temp/
+
+# Generated API clients can be explicitly unignored later if we decide to commit them.
+generated/

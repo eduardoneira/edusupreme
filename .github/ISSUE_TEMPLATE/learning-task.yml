@@ -1,0 +1,40 @@
+name: Learning task
+description: Small implementation task with explicit learning goals.
+title: "[Area] "
+labels: ["type:learning"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be true when this task is finished?
+      placeholder: Create the first Spring Boot service skeleton.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Concrete checks that make the task done.
+      placeholder: |
+        - Service starts locally.
+        - Health endpoint returns 200.
+        - README documents the command to run it.
+    validations:
+      required: true
+  - type: textarea
+    id: technology-practiced
+    attributes:
+      label: Technology Practiced
+      description: Which technology or concept is this task meant to teach?
+      placeholder: Spring Boot, Actuator, Gradle, local development workflow.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / Resources
+      description: Links, constraints, or implementation hints.
+      placeholder: Keep this scoped to the smallest useful vertical step.
+    validations:
+      required: false
