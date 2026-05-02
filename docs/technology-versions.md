@@ -11,7 +11,7 @@ This project favors stable, widely supported versions that are common in modern 
 | Spring Cloud | Spring Cloud 2025.1.x | Compatible line for Spring Boot 4.0.x services. |
 | Angular | Angular 20 LTS or Angular 21 | Prefer Angular 20 when strict LTS matters; Angular 21 is useful for current-feature learning. |
 | Node.js | Node.js LTS | Keep Angular tooling on an LTS runtime. |
-| Database | PostgreSQL | Primary relational database for transactional services. |
+| Database | PostgreSQL 17 | Primary relational database for transactional services, pinned to a stable major version for local development. |
 | Messaging | Kafka | Event-driven practice after the first REST slice is working. |
 | Local infra | Docker Compose | Local, reproducible development environment. |
 

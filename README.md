@@ -23,6 +23,7 @@ Initial capabilities:
 
 - Rebuild practical Spring Boot fluency.
 - Learn Angular through real screens and workflows.
+- Practice hexagonal architecture with clear domain, application, and adapter boundaries.
 - Practice API-first development with OpenAPI.
 - Use PostgreSQL and schema migrations from the start.
 - Add security with OIDC/JWT when the first feature slice is working.
@@ -76,6 +77,20 @@ Later milestones will add player, match, ranking, and notification services, plu
 ## Technology Baseline
 
 See [docs/technology-versions.md](docs/technology-versions.md).
+
+## Local Development
+
+Local infrastructure is managed with Docker Compose. See [docs/local-development.md](docs/local-development.md).
+
+Start PostgreSQL from the repository root:
+
+```bash
+docker compose -f infra/docker/compose.yml up -d postgres
+```
+
+## Architecture
+
+Backend services use hexagonal architecture as a guiding constraint. See [docs/architecture/hexagonal-architecture.md](docs/architecture/hexagonal-architecture.md).
 
 ## Planning
 

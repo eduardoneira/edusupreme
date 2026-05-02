@@ -83,6 +83,7 @@ ensure_label "area:infra" "5319e7" "Docker, CI, deployment, and local infrastruc
 ensure_label "area:kafka" "fbca04" "Kafka, async events, and messaging."
 ensure_label "area:testing" "0e8a16" "Unit, integration, contract, and e2e tests."
 ensure_label "area:docs" "006b75" "Documentation and planning."
+ensure_label "area:architecture" "1d76db" "Architecture decisions, service boundaries, and design constraints."
 ensure_label "type:feature" "a2eeef" "User-facing or system-facing feature."
 ensure_label "type:learning" "fef2c0" "Task primarily designed to practice a technology."
 ensure_label "type:bug" "d73a4a" "Bug or incorrect behavior."
@@ -134,6 +135,21 @@ Version strategy, dependency lifecycle awareness, cloud-first planning.
 ## Notes / Resources
 Prefer Java 21 LTS and an actively supported Angular/Spring line."
 
+create_issue "M0: Document hexagonal architecture rules" "M0 - Foundation" "area:architecture,type:learning,size:xs,priority:p0" "## Goal
+Define how backend services should apply hexagonal architecture.
+
+## Acceptance Criteria
+- A docs page explains the dependency rule and service package shape.
+- The doc identifies inbound adapters, outbound adapters, application ports, use cases, and domain model responsibilities.
+- The first tournament-service scaffold can follow the documented structure.
+- The doc includes testing guidance for domain, application, adapter, and integration tests.
+
+## Technology Practiced
+Hexagonal architecture, ports and adapters, service boundaries, test strategy.
+
+## Notes / Resources
+Keep the guidance practical. Avoid abstractions until the first vertical slice needs them."
+
 create_issue "M0: Add Docker Compose with PostgreSQL" "M0 - Foundation" "area:infra,type:learning,size:s,priority:p1" "## Goal
 Create local infrastructure for the first backend service.
 
@@ -155,11 +171,11 @@ Create the first Spring Boot service for tournament management.
 ## Acceptance Criteria
 - The service starts locally.
 - A health endpoint is available.
-- The app has a basic package structure for API, application, domain, and persistence.
+- The app follows the documented hexagonal package structure: domain, application ports/use cases, inbound adapters, outbound adapters, and config.
 - A README section documents how to run it.
 
 ## Technology Practiced
-Spring Boot, Actuator, Gradle or Maven, local run workflow.
+Spring Boot, Actuator, Gradle or Maven, hexagonal architecture, local run workflow.
 
 ## Notes / Resources
 Do not implement tournament CRUD in this task."

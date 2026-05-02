@@ -36,6 +36,7 @@ Every implementation task should stay small and use this structure:
 - `area:kafka`
 - `area:testing`
 - `area:docs`
+- `area:architecture`
 - `type:feature`
 - `type:learning`
 - `type:bug`
