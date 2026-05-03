@@ -44,6 +44,7 @@ out/
 .gradle/
 *.class
 *.jar
+!gradle-wrapper.jar
 *.war
 *.ear
 

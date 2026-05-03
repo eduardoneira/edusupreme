@@ -88,6 +88,19 @@ Start PostgreSQL from the repository root:
 docker compose -f infra/docker/compose.yml up -d postgres
 ```
 
+Run the first backend service:
+
+```bash
+cd apps/tournament-service
+gradle bootRun
+```
+
+Check the service health endpoint:
+
+```bash
+curl http://localhost:8081/actuator/health
+```
+
 ## Architecture
 
 Backend services use hexagonal architecture as a guiding constraint. See [docs/architecture/hexagonal-architecture.md](docs/architecture/hexagonal-architecture.md).
