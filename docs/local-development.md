@@ -6,6 +6,7 @@ This project uses Docker Compose for local infrastructure. The first local depen
 
 - Docker Desktop or another Docker Engine setup.
 - Docker Compose v2, available through `docker compose`.
+- Node.js LTS or newer for the Angular web app.
 
 ## PostgreSQL
 
@@ -53,3 +54,27 @@ docker compose -f infra/docker/compose.yml down -v
 | JDBC URL | `jdbc:postgresql://localhost:5432/edusupreme` |
 
 These credentials are for local development only. For local overrides, copy `infra/docker/.env.example` to `infra/docker/.env`. The `.env` file is ignored by git.
+
+## Angular Web App
+
+Install frontend dependencies:
+
+```bash
+cd apps/web-angular
+npm install
+```
+
+Start the local frontend:
+
+```bash
+npm start
+```
+
+The app runs at `http://localhost:4200/`.
+
+Build and lint:
+
+```bash
+npm run build
+npm run lint
+```

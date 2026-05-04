@@ -1,0 +1,59 @@
+<section class="dashboard">
+  <div class="summary-grid" aria-label="Tournament summary">
+    @for (metric of metrics; track metric.label) {
+      <article class="metric-card">
+        <span>{{ metric.label }}</span>
+        <strong>{{ metric.value }}</strong>
+        <p>{{ metric.detail }}</p>
+      </article>
+    }
+  </div>
+
+  <div class="panels">
+    <section class="panel" aria-labelledby="tournaments-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Organizer queue</p>
+          <h2 id="tournaments-heading">Tournaments</h2>
+        </div>
+        <a routerLink="/tournaments">View all</a>
+      </div>
+
+      <div class="table-list">
+        @for (tournament of tournaments; track tournament.name) {
+          <div class="table-row">
+            <div>
+              <strong>{{ tournament.name }}</strong>
+              <span>{{ tournament.date }}</span>
+            </div>
+            <span>{{ tournament.status }}</span>
+            <span>{{ tournament.players }} players</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="panel accent-panel" aria-labelledby="matches-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Referee desk</p>
+          <h2 id="matches-heading">Match board</h2>
+        </div>
+        <a routerLink="/matches">Open board</a>
+      </div>
+
+      <div class="match-list">
+        @for (match of matches; track match.table) {
+          <article>
+            <div>
+              <strong>{{ match.table }}</strong>
+              <span>{{ match.round }}</span>
+            </div>
+            <p>{{ match.players }}</p>
+            <strong>{{ match.score }}</strong>
+          </article>
+        }
+      </div>
+    </section>
+  </div>
+</section>
