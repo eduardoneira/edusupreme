@@ -14,6 +14,7 @@
           routerLinkActive="is-active"
           [routerLink]="item.path"
           [routerLinkActiveOptions]="{ exact: item.path === '/dashboard' }"
+          ariaCurrentWhenActive="page"
         >
           {{ item.label }}
         </a>
