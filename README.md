@@ -101,6 +101,21 @@ Check the service health endpoint:
 curl http://localhost:8081/actuator/health
 ```
 
+Run the Angular web app:
+
+```bash
+cd apps/web-angular
+npm install
+npm start
+```
+
+Build and lint the web app:
+
+```bash
+npm run build
+npm run lint
+```
+
 ## Architecture
 
 Backend services use hexagonal architecture as a guiding constraint. See [docs/architecture/hexagonal-architecture.md](docs/architecture/hexagonal-architecture.md).

@@ -1,0 +1,41 @@
+<div class="app-shell">
+  <aside class="sidebar" aria-label="Primary">
+    <a class="brand" routerLink="/dashboard" aria-label="Edusupreme dashboard">
+      <span class="brand-mark">ES</span>
+      <span>
+        <strong>Edusupreme</strong>
+        <small>Tournament control</small>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      @for (item of primaryNavigation; track item.path) {
+        <a
+          routerLinkActive="is-active"
+          [routerLink]="item.path"
+          [routerLinkActiveOptions]="{ exact: item.path === '/dashboard' }"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">M0 Foundation</p>
+        <h1>Tournament operations</h1>
+      </div>
+
+      <div class="topbar-actions" aria-label="Current workspace status">
+        <span>Spring service: localhost:8081</span>
+        <span>Web shell: localhost:4200</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>
