@@ -14,10 +14,6 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-defaults:
-  run:
-    working-directory: apps/tournament-service
-
 jobs:
   tournament-service:
     name: Tournament service
@@ -25,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Set up Java
         uses: actions/setup-java@v5
@@ -38,4 +34,36 @@ jobs:
         uses: gradle/actions/wrapper-validation@v5
 
       - name: Build and test
+        working-directory: apps/tournament-service
         run: ./gradlew build --no-daemon
+
+  web-angular:
+    name: Angular web app
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/web-angular/package-lock.json
+
+      - name: Install dependencies
+        working-directory: apps/web-angular
+        run: npm ci
+
+      - name: Build
+        working-directory: apps/web-angular
+        run: npm run build
+
+      - name: Lint
+        working-directory: apps/web-angular
+        run: npm run lint
+
+      - name: Test
+        working-directory: apps/web-angular
+        run: npm run test -- --watch=false
