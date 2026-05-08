@@ -41,9 +41,11 @@ gradle test
 
 ```text
 com.edusupreme.tournament
-  api/          HTTP-facing API adapters
-  application/  use cases and application orchestration
-  domain/       business concepts and rules
-  persistence/  persistence adapters and database mapping
+  api/          HTTP-facing inbound adapter
+  application/  use cases, ports, and application orchestration
+  domain/       business concepts, rules, and invariants
+  persistence/  outbound persistence adapter and database mapping
   config/       Spring and infrastructure configuration
 ```
+
+See [../../docs/architecture/hexagonal-architecture.md](../../docs/architecture/hexagonal-architecture.md) for the full backend package shape expected once the first vertical slice adds implementation classes.
