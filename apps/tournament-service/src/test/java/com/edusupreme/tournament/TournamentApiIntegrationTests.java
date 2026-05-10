@@ -52,6 +52,21 @@ class TournamentApiIntegrationTests {
     }
 
     @Test
+    void appliesFlywayMigrationOnStartup() {
+        Integer migrationCount = jdbcTemplate.queryForObject(
+                """
+                SELECT count(*)
+                FROM flyway_schema_history
+                WHERE version = '1'
+                    AND script = 'V1__create_tournaments.sql'
+                    AND success = true
+                """,
+                Integer.class);
+
+        assertThat(migrationCount).isEqualTo(1);
+    }
+
+    @Test
     void createsTournamentAndPersistsIt() throws Exception {
         String requestBody = """
                 {
