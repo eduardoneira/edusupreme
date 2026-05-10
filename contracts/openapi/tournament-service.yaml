@@ -27,9 +27,9 @@ paths:
                 summary: Local open tournament
                 value:
                   name: Madrid Spring Open
-                  startsAt: "2026-06-20T09:00:00+02:00"
-                  venueName: Centro Deportivo Municipal
-                  city: Madrid
+                  startDate: "2026-06-20"
+                  endDate: "2026-06-21"
+                  status: SCHEDULED
       responses:
         "201":
           description: Tournament created.
@@ -89,7 +89,8 @@ components:
       additionalProperties: false
       required:
         - name
-        - startsAt
+        - startDate
+        - endDate
       properties:
         name:
           type: string
@@ -98,33 +99,28 @@ components:
           maxLength: 120
           examples:
             - Madrid Spring Open
-        startsAt:
+        startDate:
           type: string
-          format: date-time
-          description: Scheduled start date and time, including timezone offset. Must be in the future when the tournament is created.
+          format: date
+          description: First tournament date.
           examples:
-            - "2026-06-20T09:00:00+02:00"
-        venueName:
+            - "2026-06-20"
+        endDate:
           type: string
-          description: Optional venue or club name where the tournament is played.
-          minLength: 2
-          maxLength: 160
+          format: date
+          description: Final tournament date. Must be the same as or after startDate.
           examples:
-            - Centro Deportivo Municipal
-        city:
-          type: string
-          description: Optional city for search and display.
-          minLength: 2
-          maxLength: 100
-          examples:
-            - Madrid
+            - "2026-06-21"
+        status:
+          $ref: "#/components/schemas/TournamentStatus"
     TournamentResponse:
       type: object
       additionalProperties: false
       required:
         - id
         - name
-        - startsAt
+        - startDate
+        - endDate
         - status
         - createdAt
       properties:
@@ -140,23 +136,16 @@ components:
           maxLength: 120
           examples:
             - Madrid Spring Open
-        startsAt:
+        startDate:
           type: string
-          format: date-time
+          format: date
           examples:
-            - "2026-06-20T09:00:00+02:00"
-        venueName:
+            - "2026-06-20"
+        endDate:
           type: string
-          minLength: 2
-          maxLength: 160
+          format: date
           examples:
-            - Centro Deportivo Municipal
-        city:
-          type: string
-          minLength: 2
-          maxLength: 100
-          examples:
-            - Madrid
+            - "2026-06-21"
         status:
           $ref: "#/components/schemas/TournamentStatus"
         createdAt:

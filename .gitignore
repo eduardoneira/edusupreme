@@ -40,7 +40,7 @@ coverage/
 # Java / Spring
 target/
 build/
-out/
+/out/
 .gradle/
 *.class
 *.jar

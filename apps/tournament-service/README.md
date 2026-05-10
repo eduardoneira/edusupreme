@@ -2,7 +2,7 @@
 
 Spring Boot service for tournament management.
 
-This scaffold intentionally contains only the application entry point, Actuator health, and the initial package structure. Tournament CRUD belongs to later vertical-slice issues.
+This service currently implements the first tournament write slice: `POST /tournaments` creates and persists a tournament with a name, start date, end date, and status.
 
 ## Prerequisites
 
@@ -18,6 +18,12 @@ gradle bootRun
 ```
 
 The service starts on port `8081`.
+
+By default it expects the local PostgreSQL database from `infra/docker/compose.yml`:
+
+```bash
+docker compose -f ../../infra/docker/compose.yml up -d postgres
+```
 
 Check health:
 
@@ -36,6 +42,8 @@ Expected response:
 ```bash
 gradle test
 ```
+
+The API integration tests start PostgreSQL with Testcontainers.
 
 ## Package Structure
 
