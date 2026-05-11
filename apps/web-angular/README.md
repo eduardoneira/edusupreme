@@ -33,6 +33,16 @@ npm run build
 
 Production build artifacts are written to `dist/`.
 
+## Generate API Client
+
+The tournament API client is generated from the repository OpenAPI contract and kept under `src/app/api/generated/tournament-service`.
+
+```bash
+npm run generate:api
+```
+
+Keep handwritten UI and mapping code outside `src/app/api/generated`. The dashboard uses `src/app/api/tournament-list.service.ts` as the handwritten adapter around the generated `TournamentsService`.
+
 ## Lint
 
 ```bash

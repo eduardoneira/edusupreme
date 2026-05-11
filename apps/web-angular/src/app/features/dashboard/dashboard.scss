@@ -96,10 +96,17 @@
   display: grid;
   align-items: center;
   gap: 1rem;
-  grid-template-columns: minmax(10rem, 1fr) 9rem 7rem;
+  grid-template-columns: minmax(10rem, 1fr) 9rem;
   min-height: 4.5rem;
   border-bottom: 1px solid #edf0ef;
   padding: 0.85rem 1rem;
+}
+
+.panel-message {
+  margin: 0;
+  padding: 1rem;
+  color: #3f4c47;
+  font-weight: 700;
 }
 
 .table-row:last-child {
