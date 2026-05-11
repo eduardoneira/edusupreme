@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
+import { catchError, map, of, startWith } from 'rxjs';
+
+import { TournamentListItem, TournamentListService } from '../../api/tournament-list.service';
+
+interface TournamentListState {
+  items: TournamentListItem[];
+  status: 'error' | 'loading' | 'ready';
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -8,17 +17,25 @@ import { RouterLink } from '@angular/router';
   styleUrl: './dashboard.scss',
 })
 export class Dashboard {
+  private readonly tournamentListService = inject(TournamentListService);
+
+  private readonly tournamentListState = toSignal(
+    this.tournamentListService.listLatest().pipe(
+      map((items): TournamentListState => ({ items, status: 'ready' })),
+      startWith<TournamentListState>({ items: [], status: 'loading' }),
+      catchError(() => of<TournamentListState>({ items: [], status: 'error' })),
+    ),
+    { initialValue: { items: [], status: 'loading' } satisfies TournamentListState },
+  );
+
+  protected readonly tournamentStatus = computed(() => this.tournamentListState().status);
+  protected readonly tournaments = computed(() => this.tournamentListState().items);
+
   protected readonly metrics = [
     { label: 'Active tournaments', value: '3', detail: '2 accepting registrations' },
     { label: 'Players registered', value: '148', detail: '32 seeded for review' },
     { label: 'Matches scheduled', value: '64', detail: '18 pending table assignment' },
     { label: 'Live tables', value: '12', detail: '4 entering results' },
-  ];
-
-  protected readonly tournaments = [
-    { name: 'Spring Open', status: 'Registration', date: 'May 18', players: 64 },
-    { name: 'Club Ladder Finals', status: 'Scheduling', date: 'May 24', players: 32 },
-    { name: 'Junior Circuit', status: 'Draft', date: 'June 01', players: 52 },
   ];
 
   protected readonly matches = [

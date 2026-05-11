@@ -20,14 +20,21 @@
       </div>
 
       <div class="table-list">
-        @for (tournament of tournaments; track tournament.name) {
+        @if (tournamentStatus() === 'loading') {
+          <p class="panel-message">Loading tournaments...</p>
+        } @else if (tournamentStatus() === 'error') {
+          <p class="panel-message">Tournament service is unavailable.</p>
+        } @else if (tournaments().length === 0) {
+          <p class="panel-message">No tournaments scheduled yet.</p>
+        }
+
+        @for (tournament of tournaments(); track tournament.id) {
           <div class="table-row">
             <div>
               <strong>{{ tournament.name }}</strong>
-              <span>{{ tournament.date }}</span>
+              <span>{{ tournament.dateRange }}</span>
             </div>
             <span>{{ tournament.status }}</span>
-            <span>{{ tournament.players }} players</span>
           </div>
         }
       </div>
